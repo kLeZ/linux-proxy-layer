@@ -1,0 +1,80 @@
+#!/bin/bash
+# This script was written by Alessandro Accardo
+# You can redistribute modify, do whatever you want with this piece of code, under the terms of the GNU GPL v3
+# Copyright © Alessandro Accardo.
+
+function do-proxy-conf-svn-unset() {
+	local proto="$1"
+	local part="$2"
+	local exp="$3"
+	local file="$4"
+	local bakfile="$5"
+	local url="$6"
+
+	cp $file $bakfile
+	local var=$(do-keyvalue-action "echo" "$exp" "${proto}-proxy-${part}" "$url")
+	egrep -v "^$var" $bakfile > $file
+}
+
+function do-proxy-conf-svn-set() {
+	local proto="$1"
+	local part="$2"
+	local exp="$3"
+	local file="$4"
+	local bakfile="$5"
+	local url="$6"
+
+	cp $file $bakfile
+	local var=$(do-keyvalue-action "echo" "$exp" "${proto}-proxy-${part}" "`get-url-part $part $url`" "1")
+	echo $var >> $file
+}
+
+function do-proxy-conf-svn-check() {
+	local proto="$1"
+	local part="$2"
+	local exp="$3"
+	local file="$4"
+	local bakfile="$5"
+	local url="$6"
+
+	local var=$(do-keyvalue-action "echo" "$exp" "${proto}-proxy-${part}" "$url")
+	egrep "^$var" $file
+}
+
+function do-proxy-conf-svn-configure() {
+	[[ "$3" == "http" ]] || return 0
+
+	local parts=(host port username password)
+
+	local action="$1"
+	local exp="${2:-0}"
+	local proto="$3"
+
+	local files=(`getsysproxyvar SVN_FILES`)
+	local url="`getsysproxyvar ${proto^^}_PROXY`"
+
+	for part in "${parts[@]}"
+	do
+		for f in "${files[@]}"
+		do
+			local file="$(eval echo $f)"
+			#local bakfile="${file}-`date +%Y%m%d%H%M`.bak"
+			local bakfile="${file}.bak"
+			do-proxy-conf-svn-$action "$proto" "$part" "$exp" "$file" "$bakfile" "$url"
+		done
+		unset f
+	done
+	unset part
+}
+
+function do-proxy-conf-svn-enable() {
+	do-proxy-conf-svn-configure "set" "0" $1
+}
+
+function do-proxy-conf-svn-disable() {
+	do-proxy-conf-svn-configure "unset" "1" $1
+}
+
+function do-proxy-conf-svn-check() {
+	do-proxy-conf-svn-configure "check" "1" $1
+}
