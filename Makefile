@@ -28,4 +28,4 @@ uninstall:
 	([ -d $(confdir)proxy/ ] && rmdir --ignore-fail-on-non-empty $(confdir)proxy/) || true
 	rm -f $(envdir)02proxy
 clean:
-	find . -regextype posix-extended -regex '\./(.*~|\..*~|\#.*\#)$' -delete
+	find . -regextype posix-extended -regex '\./(.*~|\..*~|\#.*\#)$'' -delete
