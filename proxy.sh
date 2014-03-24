@@ -120,6 +120,8 @@ function setproxy() {
 }
 
 function autoproxy() {
+    [ -n "$DISABLE_AUTOPROXY" ] && return 0
+
     local enabled="`getsysproxyvar ENABLED`"
     case "$enabled" in
 	1|[yY]|[yY][eE][sS])

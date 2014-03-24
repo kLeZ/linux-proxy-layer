@@ -1,5 +1,7 @@
 #!/bin/bash
 
+OLD_DISABLE_AUTOPROXY="$DISABLE_AUTOPROXY"
+export DISABLE_AUTOPROXY="1"
 source /etc/profile
 
 setproxy
@@ -7,3 +9,9 @@ setproxy
 $@
 
 unsetproxy
+
+if [ -n "$OLD_DISABLE_AUTOPROXY" ];
+then
+    export DISABLE_AUTOPROXY="$OLD_DISABLE_AUTOPROXY"
+    unset OLD_DISABLE_AUTOPROXY
+fi
