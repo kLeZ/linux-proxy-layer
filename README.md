@@ -7,11 +7,11 @@ Installation
 =================
 In order to install linux-proxy-layer you need to install manually the files in tle list given below (an installa script will come sooner):
 
-<table>
+<table width="100%">
 	<tr>
-		<th>Type</th>
-		<th>Filename</th>
-		<th>Path</th>
+		<th width="20%">Type</th>
+		<th width="30%">Filename</th>
+		<th width="50%">Path</th>
 	</tr>
 	<tr>
 		<td>f</td>
