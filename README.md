@@ -76,5 +76,12 @@ This "layer" is made by three main components, and some variables:
 			It is in fact quite simple to write one, as the simplest env.pxm module which has the only behavior of setting up the environment variable *_proxy and *_PROXY.
 		</td>
 	</tr>
+	<tr>
+		<td>svn.pxm</td>
+		<td>proxy layer module</td>
+		<td>
+			It is the module that handles the svn's ~/.subversion/servers file, and its variables "http-proxy-{host,port,username,password}". It currently supports authentication fields only in inlined way, inside the url. If you come up with an alternative path of work, you're invited to request a pull, I will be glad to integrate your code (if I think it's important to).
+		</td>
+	</tr>
 </table>
 
