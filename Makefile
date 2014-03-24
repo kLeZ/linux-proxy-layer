@@ -16,7 +16,7 @@ install: clean
 	ln -sf $(CONF_PREFIX)proxy/example.conf $(CONF_PREFIX)proxy/default.conf
 	install -o root -g root -m 0644 proxy/modules/env.pxm $(CONF_PREFIX)proxy/modules
 	install -o root -g root -m 0644 proxy/modules/svn.pxm $(CONF_PREFIX)proxy/modules
-	echo -e "PROXY_CONF=\"$(CONF_PREFIX)/proxy/default.conf\"\n" >> $(ENV_PREFIX)02proxy
+	echo -e "PROXY_CONF=\"$(CONF_PREFIX)proxy/default.conf\"\n" >> $(ENV_PREFIX)02proxy
 uninstall:
 	rm -f $(PROFILE_PREFIX)proxy.sh
 	rm -f $(USR_PREFIX)bin/proxify
