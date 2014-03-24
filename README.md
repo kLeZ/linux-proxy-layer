@@ -59,5 +59,22 @@ This "layer" is made by three main components, and some variables:
 			It simply saves the DISABLE_AUTOPROXY value, it sets DISABLE_AUTOPROXY value to "1" and does all the stuff. Then it reset the DISABLE_AUTOPROXY var to its previous value.
 		</td>
 	</tr>
+	<tr>
+		<td>proxy/example.conf</td>
+		<td>Configuration file</td>
+		<td>
+			It is the example configuration file.<br/>
+			Inside it are explained all the values that the proxy layer can use.<br/>
+			Some of them (MODULES, PROTOCOLS) are for internal work, and for modules development.
+		</td>
+	</tr>
+	<tr>
+		<td>env.pxm</td>
+		<td>proxy layer module</td>
+		<td>
+			Proxy layer supports modules.<br/>
+			It is in fact quite simple to write one, as the simplest env.pxm module which has the only behavior of setting up the environment variable *_proxy and *_PROXY.
+		</td>
+	</tr>
 </table>
 
