@@ -5,29 +5,10 @@ This is a collection of scripts and some configuration to handle proxies on a Li
 
 Installation
 =================
-In order to install linux-proxy-layer you need to install manually the files in tle list given below (an installa script will come sooner):
+In order to install linux-proxy-layer you need issue the following command: ~ # make install (as root).
+Note that in the Makefile a file "02proxy" is created inside the /etc/env.d/ path.
+If you do not have this path you simply need to set the PROXY_CONF env variable with the path to your configuration file inside /etc/conf.d/proxy/.
 
-<table>
-	<tr>
-		<th>Type</th>
-		<th>Filename</th>
-		<th>Path</th>
-	</tr>
-	<tr>
-		<td>f</td>
-		<td>proxy.sh</td>
-		<td>/etc/profile.d/</td>
-	</tr>
-	<tr>
-		<td>f</td>
-		<td>proxify</td>
-		<td>/usr/local/bin/</td>
-	</tr>
-	<tr>
-		<td>d</td>
-		<td>proxy</td>
-		<td>/etc/conf.d/</td>
-	</tr>
-</table>
+The default value for this var is "/etc/conf.d/proxy/default.conf", that is installed as a soft link pointing to /etc/conf.d/proxy/example.conf.
 
-and set the PROXY_CONF var to your configuration file inside /etc/conf.d/proxy/
+You also need to configure your proxy inside a configuration file based on the example.conf one, instructions on how to set the configuration properly are described in the file itself.
