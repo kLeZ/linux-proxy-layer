@@ -2,6 +2,17 @@ linux-proxy-layer
 =================
 
 This is a collection of scripts and some configuration to handle proxies on a Linux distro (tested only on Gentoo)
+linux-proxy-layer supports the concept of modules.
+You can write a module if you want, simply by creating a .pxm file inside $PROXY_CONF/modules/.
+
+Modules
+=======
+
+A module is a script (sourced by the system inside the toggleproxy function) that implements three main functions:
+* do-proxy-conf-env-enable()
+* do-proxy-conf-env-disable()
+* do-proxy-conf-env-check()
+
 
 Installation
 ============
