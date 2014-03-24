@@ -33,20 +33,20 @@ This "layer" is made by three main components, and some variables:
 			It can even work inside scripts if sourced.<br/>
 			Contains the helper functions "getvalue" "do-keyvalue-action" "get-url-part" "getsysproxyvar" and the proxy-specific functions "toggleproxy" and "autoproxy".<br/>
 			The functions "setproxy" "unsetproxy" and "checkproxy" are simply shortcuts to the toggleproxy function.<br/>
-			<code>
-				function checkproxy() {
-					toggleproxy "check"
-				}
-
-				function unsetproxy() {
-					toggleproxy "disable"
-					echo "Proxy disabled!"
-				}
-
-				function setproxy() {
-					toggleproxy "enable"
-					echo "Proxy enabled!"
-				}
+			<code><br/>
+				function checkproxy() {<br/>
+					toggleproxy "check"<br/>
+				}<br/>
+<br/>
+				function unsetproxy() {<br/>
+					toggleproxy "disable"<br/>
+					echo "Proxy disabled!"<br/>
+				}<br/>
+<br/>
+				function setproxy() {<br/>
+					toggleproxy "enable"<br/>
+					echo "Proxy enabled!"<br/>
+				}<br/>
 			</code>
 		</td>
 	</tr>
