@@ -1,3 +1,7 @@
+## postinstall.sh is my personal postinstall script, that executes a symbolic link to my personal proxy file, not included for security reasons.
+postinstall.sh
+
+# Backup files
 *~
 .*~
 */*~

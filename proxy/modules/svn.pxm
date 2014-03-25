@@ -53,18 +53,23 @@ function do-proxy-conf-svn-configure() {
 	local files=(`getsysproxyvar SVN_FILES`)
 	local url="`getsysproxyvar ${proto^^}_PROXY`"
 
-	for part in "${parts[@]}"
+	for f in "${files[@]}"
 	do
-		for f in "${files[@]}"
+	    local file="$(eval echo $f)"
+	    #local bakfile="${file}-`date +%Y%m%d%H%M`.bak"
+	    local bakfile="${file}.bak"
+	    if [ -f "$file" ];
+	    then
+		for part in "${parts[@]}"
 		do
-			local file="$(eval echo $f)"
-			#local bakfile="${file}-`date +%Y%m%d%H%M`.bak"
-			local bakfile="${file}.bak"
-			do-proxy-conf-svn-$action "$proto" "$part" "$exp" "$file" "$bakfile" "$url"
+		    do-proxy-conf-svn-$action "$proto" "$part" "$exp" "$file" "$bakfile" "$url"
 		done
-		unset f
+		unset part
+	    else
+		echo "File ${file} does not exist. Please, check your $PROXY_CONF file."
+	    fi
 	done
-	unset part
+	unset f
 }
 
 function do-proxy-conf-svn-enable() {
